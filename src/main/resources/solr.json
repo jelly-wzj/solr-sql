@@ -1,0 +1,19 @@
+{
+	version : '1.0',
+	defaultSchema : 'solr',
+	schemas : [{
+		name : 'solr',
+		tables : [{
+			name : 'docs',
+			type : 'custom',
+			factory : 'com.jenkin.solr.SolrTableFactory',
+			operand : {
+				// solrUrl : 'http://192.168.204.181:8121/solr/sql',
+				defaultCollection : 'sql',
+				zkHosts : '192.168.204.181:2181,192.168.204.182:2181,192.168.204.183:2181',
+				columns : 'id integer, name char, age integer',
+				columnMapping : 'name->name_s, age->age_i'
+			}
+		}]
+	}]
+}
