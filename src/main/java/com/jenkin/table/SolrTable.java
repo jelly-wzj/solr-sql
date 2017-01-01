@@ -1,16 +1,10 @@
 package com.jenkin.table;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.NoSuchElementException;
-
+import com.jenkin.exceptions.SolrSqlException;
+import com.jenkin.solr.SolrClientFactory;
+import com.jenkin.solr.SolrTableFactory.ArgsParser;
+import com.jenkin.solr.SolrTranslator;
+import com.jenkin.utils.Constants;
 import org.apache.calcite.DataContext;
 import org.apache.calcite.linq4j.Enumerable;
 import org.apache.calcite.linq4j.Linq4j;
@@ -27,11 +21,10 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 
-import com.jenkin.exceptions.SolrSqlException;
-import com.jenkin.solr.SolrClientFactory;
-import com.jenkin.solr.SolrTranslator;
-import com.jenkin.solr.SolrTableFactory.ArgsParser;
-import com.jenkin.utils.Constants;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.Map.Entry;
 
 public class SolrTable extends AbstractTable implements ScannableTable, FilterableTable {
 	private final Logger logger = Logger.getLogger(SolrTable.class);

@@ -1,17 +1,5 @@
 package com.jenkin.test;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.CloudSolrClient;
 import org.apache.solr.client.solrj.impl.CloudSolrClient.Builder;
@@ -19,6 +7,13 @@ import org.apache.solr.common.SolrInputDocument;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.*;
 
 public class SolrSqlTest {
 
@@ -66,15 +61,15 @@ public class SolrSqlTest {
 		Assert.assertEquals(2, query("select * from docs where not (age>35)").size());
 	}
 
-//	@Test
-//	public void test8() throws Exception {
-//		Assert.assertEquals(2, query("select * from docs where not (age>35 and name='bluejoe')").size());
-//	}
-//
-//	@Test
-//	public void test9() throws Exception {
-//		Assert.assertEquals(2, query("select * from docs where age>35 or name='even'").size());
-//	}
+	@Test
+	public void test8() throws Exception {
+		Assert.assertEquals(2, query("select * from docs where not (age>35 and name='bluejoe')").size());
+	}
+
+	@Test
+	public void test9() throws Exception {
+		Assert.assertEquals(2, query("select * from docs where age>35 or name='even'").size());
+	}
 
 	private static void setupSolrDocuments() throws SolrServerException, IOException {
 		Builder builder = new CloudSolrClient.Builder();

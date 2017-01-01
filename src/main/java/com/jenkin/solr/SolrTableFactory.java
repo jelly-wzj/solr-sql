@@ -114,7 +114,7 @@ public class SolrTableFactory implements TableFactory<SolrTable> {
 			return parseSafeArgument(args, columnName,
 					"comma seperated column mappings, each column mapping is describled in format 'columnName->field_name_in_solr_document', e.g. 'name->name_s, age->age_i'",
 					"", new Parser() {
-						final Map<String, String> _tMap = new HashMap<>();
+						final Map<String, String> _tMap = new LinkedHashMap<>();
 
 						@SuppressWarnings("unchecked")
 						public Map<String, String> parse(String value) throws SolrSqlException {

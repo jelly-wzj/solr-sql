@@ -1,6 +1,6 @@
 package com.jenkin.utils;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -23,7 +23,7 @@ public class MapUtils {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <K, V, E> Map<K,V> mergeMap(Map <K,E>  m1, Map <K,V>  m2) {
-		final Map  _tMap = new HashMap ();
+		final Map  _tMap = new LinkedHashMap ();
 		for (Map.Entry<K,E> _t : m1.entrySet()) {
 			_tMap.put(_t.getKey(), m2.get(_t.getKey()) == null?_t.getKey():m2.get(_t.getKey()));
 		}
